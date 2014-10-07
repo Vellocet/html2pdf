@@ -14,7 +14,8 @@ $app->get('/', function() use($app) {
     return $app['twig']->render('index.twig');
 });
 
-$app->get('/convert/{url}', function($url) {
+$app->get('/convert', function() {
+    $url = $_GET['url'];
     $pdf = new Pdf($url);
     $pdf->binary = __DIR__ . '/../vendor/bin/wkhtmltopdf-amd64';
     $pdf->send("report.pdf");
