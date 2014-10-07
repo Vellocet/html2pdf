@@ -18,6 +18,7 @@ $app->get('/convert/{url}', function($url) {
     $pdf = new Pdf($url);
     $pdf->binary = __DIR__ . '/../vendor/bin/wkhtmltopdf-amd64';
     $pdf->send("report.pdf");
+    exit();
 });
 
 $app['debug'] = true;
