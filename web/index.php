@@ -17,6 +17,9 @@ $app->get('/', function() use($app) {
 $app->get('/convert', function() {
     $url = $_GET['url'];
     $pdf = new Pdf($url);
+    $pdf->setOptions(array(
+        'javascript-delay' => '5000'
+    ));
     $pdf->binary = __DIR__ . '/../vendor/bin/wkhtmltopdf-amd64';
     $pdf->send("report.pdf");
     exit();
